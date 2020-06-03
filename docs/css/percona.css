@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css?family=Chivo:300,400,500,700");
+@font-face {
+  font-family: "FontAwesome";
+  src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.4.0") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2?v=4.4.0") format("woff2"), url("../fonts/fontawesome-webfont.woff?v=4.4.0") format("woff"), url("../fonts/fontawesome-webfont.ttf?v=4.4.0") format("truetype"), url("../fonts/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "FontAwesome";
+  src: url("../fonts/fontawesome-webfont.eot?#iefix&v=4.4.0") format("embedded-opentype"), url("../fonts/fontawesome-webfont.woff2?v=4.4.0") format("woff2"), url("../fonts/fontawesome-webfont.woff?v=4.4.0") format("woff"), url("../fonts/fontawesome-webfont.ttf?v=4.4.0") format("truetype"), url("../fonts/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "simple-line-icons";
+  src: url("https://www.percona.com/sites/all/themes/Porto/vendor/simple-line-icons/fonts/Simple-Line-Icons.eot?v=2.4.0#iefix") format("embedded-opentype"), url("https://www.percona.com/sites/all/themes/Porto/vendor/simple-line-icons/fonts/Simple-Line-Icons.woff2?v=2.4.0") format("woff2"), url("https://www.percona.com/sites/all/themes/Porto/vendor/simple-line-icons/fonts/Simple-Line-Icons.ttf?v=2.4.0") format("truetype"), url("https://www.percona.com/sites/all/themes/Porto/vendor/simple-line-icons/fonts/Simple-Line-Icons.woff?v=2.4.0") format("woff"), url("https://www.percona.com/sites/all/themes/Porto/vendor/simple-line-icons/fonts/Simple-Line-Icons.svg?v=2.4.0#simple-line-icons") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Glyphicons Halflings";
+  src: url("../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/glyphicons-halflings-regular.woff2") format("woff2"), url("../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
+}
+
+
+// Banner
+.wy-side-nav-search {
+	display: block;
+	width: 300px;
+	padding: .809em;
+	margin-bottom: .809em;
+	z-index: 200;
+        background-color: rgb(235, 108, 68);
+	text-align: center;
+	padding: .809em;
+	display: block;
+	color: #fcfcfc;
+	margin-bottom: .809em;
+}
+// Search
+.wy-side-nav-search input[type="text"] {
+	width: 100%;
+	border-radius: 50px;
+	padding: 6px 12px;
+	border-color: #000;
+}
+
+body, .rst-content  {
+    color: rgb(119, 119, 119);
+    display: block;
+    font-family: "Chivo", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 22px;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: start;
+    text-indent: 0;
+}
+
+
+h1, h2, .rst-content .toctree-wrapper p.caption, h3, h4, h5, h6, legend {
+	margin-top: 0;
+	font-weight: 700;
+        font-family: "Chivo", sans-serif;
+
+}
+
+h1 {
+	font-size: 2.6em;
+	line-height: 44px;
+	margin: 0 0 32px 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #1d2127;
+	font-weight: 200;
+	letter-spacing: -1px;
+	margin: 0;
+}
+
+
+.rst-content  img { max-width: 100%; }
+.rst-content h1 {
+}
+.rst-content h2 {
+}
+.rst-content h3 {
+}
+.rst-content h4 {
+}
+.rst-content h5 {
+}
+.rst-content h6 {
+}
+.rst-content a h1 {
+}
+.rst-content a h2 {
+}
+.rst-content a h3 {
+}
+.rst-content h1 a {
+}
+.rst-content h2 a {
+}
+.rst-content h3 a {
+}
+.rst-content p {
+}
+.rst-content ol {
+}
+.rst-content ul {
+}
+.rst-content ul li {
+}
+.rst-content ol li {
+}
+.rst-content li ul {
+}
+.rst-content li ol {
+}
+.rst-content ul li li {
+}
+.rst-content ol li li {
+}
+.rst-content dl {
+}
+.rst-content dd {
+}
+.rst-content dt {
+}
+.rst-content strong {
+}
+.rst-content em {
+}
+.rst-content b {
+}
+.rst-content i {
+}
+.rst-content sup {
+}
+.rst-content sub {
+}
+.rst-content a {
+}
+.rst-content p strong {
+}
+.rst-content p em {
+}
+.rst-content p sup {
+}
+.rst-content p sub {
+}
+.rst-content p b {
+}
+.rst-content p i {
+}
+.rst-content hr {
+}
+.rst-content p strong a {
+}
+.rst-content p em a {
+}
+.rst-content p a em {
+}
+.rst-content p a strong {
+}
+.rst-content p code {
+}
+.rst-content p a code {
+}
+.rst-content p code a {
+}
+.rst-content pre {
+}
+.rst-content code {
+}
+.rst-content pre code {
+}
+.rst-content blockquote {
+}
+.rst-content blockquote p {
+}
+.rst-content cite {
+}
+.rst-content img {
+}
+.rst-content figure {
+}
+.rst-content figure img {
+}
+.rst-content figcaption {
+}
+.rst-content table {
+}
+.rst-content tr {
+}
+.rst-content th {
+}
+.rst-content td {
+}
+
+a:hover, a:focus {
+    color: rgb(235, 108, 68);
+    text-decoration: underline;
+}
+
+
+.wy-menu-vertical li.current a:hover {
+    color: rgb(235, 108, 68);
+	background: #d6d6d6;
+}
