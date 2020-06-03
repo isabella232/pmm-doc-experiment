@@ -1,4 +1,4 @@
-site_name: PMM Documentation
+site_name: PMM Documentation (DEMO)
 #dev_addr: 127.0.0.1:8001
 repo_name: Percona-Lab/pmm-doc-experiment
 repo_url: https://github.com/Percona-Lab/pmm-doc-experiment
@@ -13,11 +13,11 @@ theme:
   language: en
   palette:
     primary: deep-orange
-    accent: grey
+    accent: white
   font:
     text: Chivo
     code: Roboto Mono
-  icon: _images/pmm-doc.png
+  logo: /_images/pmm-doc-logo.svg
   favicon: _images/percona_favicon.ico
 
 
