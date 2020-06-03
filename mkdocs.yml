@@ -84,14 +84,14 @@ nav:
         - Clients: 'install/clients.md'
         - DEB packages: 'install/client-install-apt.md'
         - YUM packages: 'install/client-install-yum.md'
-    - 'Using PMM Client':
+    - Using PMM Client:
         - 'manage/client-config.md'
         - 'manage/client-mysql-metrics.md'
         - 'manage/client-mongodb-metrics.md'
         - 'manage/client-proxysql-metrics.md'
         - 'manage/client-linux-metrics.md'
         - 'manage/client-external.md'
-        - 'manage/conf-postgres.md'
+#        - 'manage/conf-postgres.md'
         - 'manage/client-remove.md'
         - 'manage/client-annotations.md'
     - Percona Platform:

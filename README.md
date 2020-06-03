@@ -4,6 +4,14 @@ This is an experimental repo for evaluating [MkDocs](https://www.mkdocs.org/)
 as an additional or replacement documention platform for the
 PMM documentation repository ([pmm-doc](https://github.com/percona/pmm-doc)).
 
+The markdown files were written by Sphinx using the
+[Sphinx markdown builder](https://pypi.org/project/sphinx-markdown-builder/).
+
+## Issues
+
+- The source reST files have hard-wired references that cause broken links.
+- Images rendered with `.. figure::` are missing and must be manually added. 
+
 ## How to Install and Run
 
 ### Install Prerequisites
@@ -46,3 +54,11 @@ mkdocs serve
 ### View the documentation
 
 Open <http://localhost:8000>
+
+### Build documentation
+
+To create a stand-alone static website:
+
+```bash
+mkdocs build
+```
