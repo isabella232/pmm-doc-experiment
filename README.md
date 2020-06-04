@@ -14,9 +14,14 @@ The markdown files were written by Sphinx using the
 
 ## How to Install and Run
 
-### Install Prerequisites
+### Install Prerequisites (Debian/Ubuntu)
+   
+```bash
+sudo apt install -y python3 python3-pip
+```
 
-Python: See <https://www.python.org/downloads/>
+For other platforms, see <https://www.python.org/downloads/>
+
 
 ### Check Prerequisites
 
@@ -57,8 +62,10 @@ Open <http://localhost:8000>
 
 ### Build documentation
 
-To create a stand-alone static website:
+Create a stand-alone static website:
 
 ```bash
 mkdocs build
 ```
+
+Open `site/index.html` in your browser.
