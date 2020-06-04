@@ -19,10 +19,8 @@ theme:
     code: Roboto Mono
   logo: /_images/pmm-doc-logo.svg
   favicon: _images/percona_favicon.ico
-
-
-#features:
-    #    tabs: true # top row nav
+#  features:
+#     tabs: true # top row navigation bar
 
 #extra_css:
 #  - "css/percona.css"
@@ -33,8 +31,11 @@ markdown_extensions:
         toc_depth: "2-3"
         anchorlink: True
 #        permalink: 
-    - admonition:
+    - admonition
+    - smarty:
+        smart_angled_quotes: True
     - pymdownx.mark
+    - pymdownx.smartsymbols
     - pymdownx.tabbed
     - pymdownx.tilde
     - pymdownx.superfences
@@ -64,7 +65,7 @@ plugins:
           - dashboards/dashboard-prometheus-exporter-status.md
           - dashboards/dashboard-prometheus.md
           - release-notes/index.md
-            
+
 nav:
     - 'index.md'
     - 'PMM Concepts':
