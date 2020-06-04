@@ -5,11 +5,12 @@ repo_url: https://github.com/Percona-Lab/pmm-doc-experiment
 edit_uri: edit/master/docs/
 site_description: PMM Documentation under MkDocs (demonstration)
 site_author: Percona LLC
-
+copyright: Percona LLC, &#169; 2020
 use_directory_urls: false
 
 theme:
   name: material
+  custom_dir: theme
   language: en
   palette:
     primary: deep-orange
