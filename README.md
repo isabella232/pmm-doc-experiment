@@ -12,25 +12,38 @@ The markdown files were written by Sphinx using the
 - The source reST files have hard-wired references that cause broken links.
 - Images rendered with `.. figure::` are missing and must be manually added. 
 
-## How to Install and Run
+## Installation
 
-### Install Prerequisites (Debian/Ubuntu)
+### Option 1: Docker
+
+Use a [Docker](https://docs.docker.com/engine/install/): image with all prerequisites already installed:
+
+```bash
+# Clone this repository
+cd pmm-doc-experiment
+docker run --rm -it -p 8000:8000 -v $(pwd):/mkdocs pauljacobspercona/mkdocs-showcase
+```
+
+Open <http://localhost:8000> in a browser.
+
+### Option 2: Native Install
+
+#### Install Prerequisites (Debian/Ubuntu)
    
 ```bash
 sudo apt install -y python3 python3-pip
 ```
 
-For other platforms, see <https://www.python.org/downloads/>
+(For other platforms, see <https://www.python.org/downloads/>.)
 
-
-### Check Prerequisites
+#### Check Prerequisites
 
 ```bash
 python3 --version # >= 3.5
 pip3 --version # >= 20.0.2
 ```
 
-### Install MkDocs and Extensions, Plugins, and Themes
+#### Install MkDocs and Extensions, Plugins, and Themes
 
 ```bash
 pip3 install mkdocs
@@ -43,26 +56,19 @@ pip3 install pymdown-extensions
 pip3 install pygments
 ```
 
-### Clone this repository
+#### View Documentation
 
 ```bash
-git clone https://github.com/Percona-Lab/pmm-doc-experiment.git
-```
-
-### Run MkDocs
-
-```bash
+# clone this repository
 cd pmm-doc-experiment
 mkdocs serve
 ```
 
-### View the documentation
-
 Open <http://localhost:8000>
 
-### Build documentation
+#### Build documentation
 
-Create a stand-alone static website:
+To create a stand-alone static website:
 
 ```bash
 mkdocs build
