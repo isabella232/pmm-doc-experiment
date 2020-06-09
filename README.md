@@ -16,7 +16,7 @@ The markdown files were written by Sphinx using the
 
 ### Option 1: Docker
 
-Use a [Docker](https://docs.docker.com/engine/install/): image with all prerequisites already installed:
+Use a [Docker](https://docs.docker.com/engine/install/) image with all prerequisites already installed:
 
 ```bash
 # Clone this repository
