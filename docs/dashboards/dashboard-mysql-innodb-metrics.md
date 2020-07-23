@@ -1,6 +1,6 @@
-# {{ mysql }} {{ innodb }} Metrics
+# MySQL InnoDB Metrics
 
-This dashboard contains metrics that help analyze how the {{ innodb }} engine
+This dashboard contains metrics that help analyze how the InnoDB engine
 performs.
 
 ## InnoDB Checkpoint Age
@@ -14,40 +14,34 @@ logs and let the checkpointing perform its work as smooth as possible. If you
 don’t do this, InnoDB will do synchronous flushing at the worst possible time,
 i.e. when you are busiest.
 
-{{ view_all_metrics }} {{ mysql }} {{ innodb }} Metrics
+## InnoDB Transactions
 
-## {{ innodb }} Transactions
-
-{{ innodb }} is an MVCC storage engine, which means you can start a transaction and
+InnoDB is an MVCC storage engine, which means you can start a transaction and
 continue to see a consistent snapshot even as the data changes. This is
 implemented by keeping old versions of rows as they are modified.
 
 The *InnoDB History List* is the undo logs which are used to store these
-modifications. They are a fundamental part of the {{ innodb }} transactional
+modifications. They are a fundamental part of the InnoDB transactional
 architecture.
 
 If the history length is rising regularly, do not let open connections linger
-for a long period as this can affect the performance of {{ innodb }}
-considerably. It is also a good idea to look for long running queries in {{ qan }}.
+for a long period as this can affect the performance of InnoDB
+considerably. It is also a good idea to look for long running queries in QAN.
 
-{{ view_all_metrics }} {{ mysql }} {{ innodb }} Metrics
-
-## {{ innodb }} Row Operations
+## InnoDB Row Operations
 
 This metric allows you to see which operations occur and the number of rows
 affected per operation. A metric like *Queries Per Second* will give you an idea
 of queries, but one query could effect millions of rows.
 
-{{ view_all_metrics }} {{ mysql }} {{ innodb }} Metrics
-
-## {{ innodb }} Row Lock Time
+## InnoDB Row Lock Time
 
 When data is locked, then that means that another session cannot update that
 data until the lock is released (which unlocks the data and allows other users
-to update that data. Locks are usually released by either a {{ sql_rollback }} or
-{{ sql_commit }} SQL statement.
+to update that data. Locks are usually released by either a `ROLLBACK` or
+`COMMIT` SQL statement.
 
-{{ innodb }} implements standard row-level locking where there are two types of
+InnoDB implements standard row-level locking where there are two types of
 locks, shared (S) locks and exclusive (X) locks.
 
 A shared (S) lock permits the transaction that holds the lock to read a row.  An
@@ -60,9 +54,7 @@ second.
 
 *Row Lock Wait Load* is a rolling *5* minute average of *Row Lock Waits*.
 
-{{ view_all_metrics }} {{ mysql }} {{ innodb }} Metrics
-
-## {{ innodb }} I/O
+## InnoDB I/O
 
 This metric has the following series:
 
@@ -80,9 +72,7 @@ This metric has the following series:
 calls is influenced by the setting of the innodb_flush_method configuration
 option.
 
-{{ view_all_metrics }} {{ mysql }} {{ innodb }} Metrics
-
-## {{ innodb }} Log File Usage Hourly
+## InnoDB Log File Usage Hourly
 
 Along with the buffer pool size, innodb_log_file_size is the most important
 setting when we are working with InnoDB. This graph shows how much data was
@@ -96,34 +86,78 @@ busiest.
 
 This graph can help guide you in setting the correct innodb_log_file_size.
 
-{{ view_all_metrics }} {{ mysql }} {{ innodb }} Metrics
+## InnoDB Deadlocks
 
-## {{ innodb }} Deadlocks
-
-A deadlock in {{ mysql }} happens when two or more transactions mutually hold
+A deadlock in MySQL happens when two or more transactions mutually hold
 and request for locks, creating a cycle of dependencies. In a transaction
 system, deadlocks are a fact of life and not completely avoidable. InnoDB
 automatically detects transaction deadlocks, rollbacks a transaction
 immediately and returns an error.
 
-{{ view_all_metrics }} {{ mysql }} {{ innodb }} Metrics
+## InnoDB Condition Pushdown
 
-## {{ innodb }} Condition Pushdown
-
-Index Condition Pushdown (ICP) is an optimization for the case where {{ mysql }}
+Index Condition Pushdown (ICP) is an optimization for the case where MySQL
 retrieves rows from a table using an index.
 
 Without ICP, the storage engine traverses the index to locate rows in the base
-table and returns them to the {{ mysql }} server which evaluates the `WHERE`
+table and returns them to the MySQL server which evaluates the `WHERE`
 condition for the rows. With ICP enabled, and if parts of the `WHERE`
-condition can be evaluated by using only columns from the index, the {{ mysql }}
+condition can be evaluated by using only columns from the index, the MySQL
 server pushes this part of the `WHERE` condition down to the storage engine.
 The storage engine then evaluates the pushed index condition by using the index
 entry and only if this is satisfied is the row read from the table.
 
 ICP can reduce the number of times the storage engine must access the base table
-and the number of times the {{ mysql }} server must access the storage engine.
-
-{{ view_all_metrics }} {{ mysql }} {{ innodb }} Metrics
+and the number of times the MySQL server must access the storage engine.
 
 ## Other Metrics
+
+
+* InnoDB Logging Performance
+
+
+* InnoDB Buffer Pool Content
+
+
+* InnoDB Buffer Pool Pages
+
+
+* InnoDB Buffer Pool I/O
+
+
+* InnoDB Buffer Pool Requests
+
+
+* InnoDB Buffer Read-Ahead
+
+
+* InnoDB Change Buffer
+
+
+* InnoDB Change Buffer Activity
+
+**See also**
+
+
+* [Percona Database Performance Blog: How to Deal with MySQL deadlocks](https://www.percona.com/blog/2014/10/28/how-to-deal-with-mysql-deadlocks/)
+
+
+* [Percona Database Performance Blog: ICP counters and how to interpret them](https://www.percona.com/blog/2017/05/09/mariadb-handler_icp_-counters-what-they-are-and-how-to-use-them/)
+
+
+* [Percona Database Performance Blog: How to calculate a good InnoDB log file size](https://www.percona.com/blog/2008/11/21/how-to-calculate-a-good-innodb-log-file-size/)
+
+
+* [Percona Server Documentation: Improved InnoDB I/O scalability](http://www.percona.com/doc/percona-server/5.5/scalability/innodb_io_55.html)
+
+
+* [MySQL Server 5.7 Documentation: Shared lock](https://dev.mysql.com/doc/refman/5.7/en/glossary.html#glos_shared_lock)
+
+
+* [MySQL Server 5.7 Documentation: Exclusive lock](https://dev.mysql.com/doc/refman/5.7/en/glossary.html#glos_exclusive_lock)
+
+
+* [MySQL Server 5.7 Documentation: InnoDB locking](https://dev.mysql.com/doc/refman/5.7/en/innodb-locking.html)
+
+
+* [MySQL Server Documentation: Index Condition Pushdown optimisation](https://dev.mysql.com/doc/refman/5.7/en/index-condition-pushdown-optimization.html)

@@ -1,7 +1,7 @@
 # Using PMM Client
 
 
-* Configuring PMM Client with pmm-admin config
+* Configuring PMM Client with `pmm-admin config`
 
 
 * Adding MySQL Service Monitoring
@@ -19,10 +19,7 @@
 * Adding External Services
 
 
-* PostgreSQL
-
-
-* Removing monitoring services with pmm-admin remove
+* Removing monitoring services with `pmm-admin remove`
 
 
 * Annotating important Application Events

@@ -1,7 +1,7 @@
-# {{ percona_platform }}
+# Percona Platform
 
 
 * Introduction
 
 
-* {{ stt }}
+* Security Threat Tool

@@ -1,14 +1,14 @@
-# {{ dbd_system_overview }} Dashboard
+# Nodes Overview
 
-The {{ dbd_system_overview }} dashboard provides details about the efficiency of
+The Nodes Overview dashboard provides details about the efficiency of
 work of the following components. Each component is represented as a section in
-the {{ dbd_system_overview }} dashboard.
+the dashboard.
 
 
 * CPU
 
 
-* Memory
+* Memory & Swap
 
 
 * Disk

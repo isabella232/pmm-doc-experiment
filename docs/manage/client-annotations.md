@@ -2,36 +2,62 @@
 
 ## Adding annotations
 
-Use the {{ pmm_admin_annotate }} command to set notifications about important
-application events and display them on all dashboards. By using annotations, you
-can conveniently analyze the impact of application events on your database.
+The `pmm-admin annotate` command registers a moment in time, marking it with a text string called an *annotation*.
 
-### USAGE
+The presence of an annotation shows as a vertical dashed line on a dashboard graph; the annotation text is revealed by mousing over the caret indicator below the line.
 
-{{ tip_run_this_root }}
+Annotations are useful for recording the moment of a system change or other significant application event.
 
-### OPTIONS
+They can be set globally or for specific nodes or services.
 
-The {{ pmm_admin_annotate }} supports the following options:
 
-{{ opt_tags }}
 
-> Specify one or more tags applicable to the annotation that you are
-> creating. Enclose your tags in quotes and separate individual tags by a
-> comma, such as “tag 1,tag 2”.
+![image](/_images/pmm-server.mysql-overview.mysql-client-thread-activity.1.png)
 
-You can also use
-global options that apply to any other command.
+**USAGE**
 
-## Marking Important Events with Annotations [application-event-marking]
+`pmm-admin annotate [--node|--service] <annotation> [--tags <tags>] [--node-name=<node>] [--service-name=<service>]`
 
-Some events in your application may impact your database. Annotations
-visualize these events on each dashboard of {{ pmm_server }}.
+**OPTIONS**
 
-To create a new annotation, run {{ pmm_admin_annotate }} command on
-{{ pmm_client }} passing it text which explains what event the new
-annotation should represent. Use the {{ opt_tags }} option to supply one
-or more tags separated by a comma.
+`<annotation>`
 
-You may toggle displaying annotations on metric graphs by using the
-{{ gui_pmm_annotations }} checkbox.
+    The annotation string. If it contains spaces, it should be quoted.
+
+`--node`
+
+    Annotate the current node or that specified by `--node-name`.
+
+`--service`
+
+    Annotate all services running on the current node, or that specified by `--service-name`.
+
+`--tags`
+
+    A quoted string that defines one or more comma-separated tags for the annotation. Example: `"tag 1,tag 2"`.
+
+`--node-name`
+
+    The node name being annotated.
+
+`--service-name`
+
+    The service name being annotated.
+
+## Annotation Visibility
+
+You can toggle the display of annotations on graphs with the *PMM Annotations* checkbox.
+
+
+
+![image](/_images/pmm-server.pmm-annotations.png)
+
+Remove the check mark to hide annotations from all dashboards.
+
+**See also**
+
+
+* pmm-admin - PMM Administration Tool
+
+
+* [docs.grafana.org: Annotations](http://docs.grafana.org/reference/annotations/)

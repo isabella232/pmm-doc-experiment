@@ -1,43 +1,22 @@
 # Installing PMM Server
 
 
-* Running {{ pmm_server }} via {{ docker }}
+* Running PMM Server via Docker
 
 
-    * Setting Up a {{ docker }} Container for {{ pmm_server }}
+    * Setting Up a Docker Container for PMM Server
 
 
-        * Pulling the PMM Server Docker Image
+    * Installing and using specific PMM Server version
 
 
-        * Creating the pmm-data Container
+    * Updating PMM Server Using Docker
 
 
-        * Creating and Launching the PMM Server Container
+    * Backing Up PMM Data from the Docker Container
 
 
-        * Installing and using specific PMM Server version
-
-
-    * Updating {{ pmm_server }} Using {{ docker }}
-
-
-        * Creating a backup version of the current pmm-server Docker container
-
-
-        * Pulling a new Docker Image
-
-
-        * Creating a new Docker container based on the new image
-
-
-        * Removing the backup container
-
-
-    * Backing Up {{ pmm }} Data from the {{ docker }} Container
-
-
-    * Restoring the Backed Up Information to the PMM Data Container
+    * Restoring Backed-up Information to a PMM Data Container
 
 
 * Running PMM Server Using AWS Marketplace
@@ -46,31 +25,40 @@
     * Setting Up a PMM Instance Using the website GUI
 
 
-        * Setting up a VPC and an EC2 Instance Type
+    * Setting up a VPC and an EC2 Instance Type
 
 
-        * Limiting Access to the instance: security group and a key pair
+    * Limiting Access to the instance: security group and a key pair
 
 
-        * Applying settings
+    * Applying settings
 
 
-        * Adjusting instance settings in the EC2 Console
+    * Adjusting instance settings in the EC2 Console
 
 
-        * Running the instance
+    * Running the instance
 
 
-            * Resizing the EBS Volume
+    * Resizing the EBS Volume
 
 
-            * \`Upgrading PMM Server on AWS
+    * Upgrading PMM Server on AWS
 
 
 * PMM Server as a Virtual Appliance
 
 
     * Supported Platforms for Running the PMM Server Virtual Appliance
+
+
+    * VirtualBox Using the Command Line
+
+
+    * VirtualBox Using the GUI
+
+
+    * VMware Workstation Player
 
 
     * Identifying PMM Server IP Address
@@ -88,34 +76,13 @@
 * Verifying PMM Server
 
 
+    * Accessing the Components of the Web Interface
+
+
 * Configuring PMM Server
 
 
     * PMM Settings Page
-
-
-        * Settings
-
-
-        * Metrics resolution
-
-
-        * Telemetry
-
-
-        * Check for updates
-
-
-        * Security Threat Tool
-
-
-        * SSH Key Details
-
-
-        * Prometheus Alertmanager integration
-
-
-        * Diagnostics
 
 
     * Exploring PMM API

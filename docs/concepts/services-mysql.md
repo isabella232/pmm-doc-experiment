@@ -1,24 +1,24 @@
 # MySQL requirements
 
-{{ pmm }} supports all commonly used variants of {{ mysql }}, including
-{{ percona_server }}, {{ mariadb }}, and {{ amazon_rds }}.  To prevent data loss and
-performance issues, {{ pmm }} does not automatically change {{ mysql }} configuration.
+PMM supports all commonly used variants of MySQL, including
+Percona Server, MariaDB, and Amazon RDS.  To prevent data loss and
+performance issues, PMM does not automatically change MySQL configuration.
 However, there are certain recommended settings that help maximize monitoring
-efficiency. These recommendations depend on the variant and version of {{ mysql }}
+efficiency. These recommendations depend on the variant and version of MySQL
 you are using, and mostly apply to very high loads.
 
-{{ pmm }} can collect query data either from the {{ slow_query_log }} or from
-{{ performance_schema }}.  The {{ slow_query_log }} provides maximum details, but can
-impact performance on heavily loaded systems. On {{ percona_server }} the query
+PMM can collect query data either from the *slow query log* or from
+*Performance Schema*.  The *slow query log* provides maximum details, but can
+impact performance on heavily loaded systems. On Percona Server the query
 sampling feature may reduce the performance impact.
 
-{{ performance_schema }} is generally better for recent versions of other {{ mysql }}
-variants. For older {{ mysql }} variants, which have neither sampling, nor
-{{ performance_schema }}, configure logging only slow queries.
+*Performance Schema* is generally better for recent versions of other MySQL
+variants. For older MySQL variants, which have neither sampling, nor
+*Performance Schema*, configure logging only slow queries.
 
-**NOTE**: {{ mysql }} with too many tables can lead to PMM Server overload due to the
+**NOTE**: MySQL with too many tables can lead to PMM Server overload due to the
 streaming of too much time series data. It can also lead to too many queries
-from `mysqld_exporter` causing extra load on {{ mysql }}. Therefore PMM Server
+from `mysqld_exporter` causing extra load on MySQL. Therefore PMM Server
 disables most consuming `mysqld_exporter` collectors automatically if
 there are more than 1000 tables.
 
@@ -30,11 +30,11 @@ SET GLOBAL <var_name>=<var_value>
 ```
 
 The following sample configurations can be used depending on the variant and
-version of {{ mysql }}:
+version of MySQL:
 
 
-* If you are running {{ percona_server }} (or {{ xtradb_cluster }}), configure the
-{{ slow_query_log }} to capture all queries and enable sampling. This will
+* If you are running Percona Server (or XtraDB Cluster), configure the
+*slow query log* to capture all queries and enable sampling. This will
 provide the most amount of information with the lowest overhead.
 
 ```
@@ -53,8 +53,7 @@ userstat=1
 ```
 
 
-* If you are running {{ mysql }} 5.6+ or {{ mariadb }} 10.0+, configure
-Configuring Performance Schema.
+* If you are running MySQL 5.6+ or MariaDB 10.0+, see Configuring Performance Schema.
 
 ```
 innodb_monitor_enable=all
@@ -62,11 +61,8 @@ performance_schema=ON
 ```
 
 
-* If you are running {{ mysql }} 5.5 or {{ mariadb }} 5.5, configure logging only slow
+* If you are running MySQL 5.5 or MariaDB 5.5, configure logging only slow
 queries to avoid high performance overhead.
-
-**NOTE**: This may affect the quality of monitoring data gathered by
-{{ abbr_qan }}.
 
 ```
 log_output=file
@@ -76,9 +72,12 @@ log_slow_admin_statements=ON
 log_slow_slave_statements=ON
 ```
 
-## [Creating a MySQL User Account to Be Used with PMM](services-mysql.md#pmm-conf-mysql-user-account-creating)
+**NOTE**: This may affect the quality of monitoring data gathered by
+Query Analytics.
 
-When adding a {{ mysql }} instance to monitoring, you can specify the {{ mysql }}
+## Creating a MySQL User Account for PMM
+
+When adding a MySQL instance to monitoring, you can specify the MySQL
 server superuser account credentials.  However, monitoring with the superuser
 account is not advised. It’s better to create a user with only the necessary
 privileges for collecting data.
@@ -86,27 +85,22 @@ privileges for collecting data.
 As an example, the user `pmm` can be created manually with the necessary
 privileges and pass its credentials when adding the instance.
 
-To enable complete {{ mysql }} instance monitoring, a command similar to the
+To enable complete MySQL instance monitoring, a command similar to the
 following is recommended:
 
-<pre class="highlight"><style type="text/css">
-span.prompt1:before {
-  content: "$ ";
-}
-</style><span class="prompt1">sudo pmm-admin add mysql --username pmm --password &lt;password&gt;</span>
-</pre>\\begin{Verbatim}[commandchars=\\\\\\{\\}]
-$ sudo pmm-admin add mysql --username pmm --password <password>
-\\end{Verbatim}Of course this user should have necessary privileges for collecting data. If
+```
+sudo pmm-admin add mysql --username pmm --password <password>
+```
+
+Of course this user should have necessary privileges for collecting data. If
 the `pmm` user already exists, you can grant the required privileges as
 follows:
 
 ```
 CREATE USER 'pmm'@'localhost' IDENTIFIED BY 'pass' WITH MAX_USER_CONNECTIONS 10;
 GRANT SELECT, PROCESS, SUPER, REPLICATION CLIENT, RELOAD ON *.* TO 'pmm'@'localhost';
-GRANT SELECT ON performance_schema.* TO 'pmm'@'localhost';
 ```
 
-For more information, run:
-{{ pmm_admin_add }}
-{{ opt_mysql }}
-{{ opt_help }}
+**See also**
+
+Adding MySQL Service Monitoring

@@ -1,10 +1,10 @@
 # Adding MongoDB Service Monitoring
 
-Before adding MongoDB should be [prepared for the monitoring](https://www.percona.com/doc/percona-monitoring-and-management/2.x/conf-mongodb.html), which involves creating the user, and setting the profiling level.
+Before adding MongoDB should be prepared for the monitoring which involves creating the user, and setting the profiling level.
 
 When done, add monitoring as follows:
 
-```bash
+```
 pmm-admin add mongodb --username=pmm --password=pmm
 ```
 
@@ -17,7 +17,10 @@ automatically as `<node>-mongodb` and `127.0.0.1:27017`.
 The command line and the output of this command may look as follows:
 
 ```
-# pmm-admin add mongodb --username=pmm --password=pmm mongo 127.0.0.1:27017
+pmm-admin add mongodb --username=pmm --password=pmm mongo 127.0.0.1:27017
+```
+
+```
 MongoDB Service added.
 Service ID  : /service_id/f1af8a88-5a95-4bf1-a646-0101f8a20791
 Service name: mongo
@@ -31,4 +34,11 @@ priority. Here is the previous example modified to use these flags:
 
 ```
 pmm-admin add mongodb --username=pmm --password=pmm --service-name=mongo --host=127.0.0.1 --port=27017
+```
+
+**NOTE**: It is also possible to add a MongoDB instance using a UNIX socket with
+just the `--socket` flag followed by the path to a socket:
+
+```
+pmm-admin add mongodb --socket=/tmp/mongodb-27017.sock
 ```

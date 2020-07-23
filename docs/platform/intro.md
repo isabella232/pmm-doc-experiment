@@ -1,3 +1,3 @@
 # Introduction
 
-{{ percona_platform }} provides value-added services to {{ pmm }}.
+Percona Platform provides value-added services to PMM.

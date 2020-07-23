@@ -1,6 +1,6 @@
-# {{ dbd_network_overview }} Dashboard
+# Network Details
 
-The information in the {{ dbd_network_overview }} dashboard is grouped into the
+The information in the Network Details dashboard is grouped into the
 following sections:
 
 ## Last Hour Statistic
@@ -8,14 +8,10 @@ following sections:
 This section reports the *inbound speed*, *outbound speed*, *traffic errors and
 drops*, and *retransmit rate*.
 
-{{ view_all_metrics }} {{ dbd_network_overview }} Dashboard
-
 ## Network Traffic
 
 This section contains the *Network traffic* and *network utilization hourly*
 metrics.
-
-{{ view_all_metrics }} {{ dbd_network_overview }} Dashboard
 
 ## Network Traffic Details
 
@@ -32,8 +28,6 @@ This section offers the following metrics:
 
 
 * Network traffic multicust
-
-{{ view_all_metrics }} {{ dbd_network_overview }} Dashboard
 
 ## Network Netstat TCP
 
@@ -53,8 +47,6 @@ This section offers the following metrics:
 
 
 * TCP segments
-
-{{ view_all_metrics }} {{ dbd_network_overview }} Dashboard
 
 ## Network Netstat UDP
 
@@ -96,8 +88,6 @@ NoPorts
 
     Datagrams received on a port with no listener
 
-{{ view_all_metrics }} {{ dbd_network_overview }} Dashboard
-
 ## ICMP
 
 This section has the following metrics:
@@ -114,7 +104,7 @@ This section has the following metrics:
 
 * Timestamps/Mask Requests
 
-### ICMP Errors
+**ICMP Errors**
 
 InErrors
 
@@ -150,7 +140,7 @@ InTimeExcds
 
     Time Exceeded messages received
 
-### Messages/Redirects
+**Messages/Redirects**
 
 InMsgs
 
@@ -171,7 +161,7 @@ OutRedirects
     Redirect messages sent. For a host, this object will always be zero, since
     hosts do not send redirects
 
-### Echos
+**Echos**
 
 InEchoReps
 
@@ -189,7 +179,7 @@ OutEchos
 
     Echo (request) messages sent
 
-### Timestamps/Mask Requests
+**Timestamps/Mask Requests**
 
 InAddrMaskReps
 
@@ -222,5 +212,3 @@ OutTimestampReps
 OutTimestamps
 
     Timestamp Request messages sent
-
-{{ view_all_metrics }} {{ dbd_network_overview }} Dashboard

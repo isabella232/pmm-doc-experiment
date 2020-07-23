@@ -1,17 +1,17 @@
-# {{ mysql }} {{ amazon_aurora }} Metrics
+# MySQL Amazon Aurora Metrics
 
-This dashboard provides metrics for analyzing {{ amazon_aurora }} instances.
+This dashboard provides metrics for analyzing Amazon Aurora instances.
 
-## [Amazon Aurora Transaction Commits](dashboard-mysql-amazon-aurora-metrics.md#amazon-aurora-transaction-commits)
+## Amazon Aurora Transaction Commits
 
-This graph shows number of commits which the {{ amazon_aurora }} engine performed as
+This graph shows number of commits which the Amazon Aurora engine performed as
 well as the average commit latency. Graph Latency does not always correlates
 with number of commits performed and can quite high in certain situations.
 
-## [Amazon Aurora Load](dashboard-mysql-amazon-aurora-metrics.md#amazon-aurora-transaction-commits)
+## Amazon Aurora Load
 
 This graph shows what statements contribute most load on the system as well
-as what load corresponds to {{ amazon_aurora }} transaction commit.
+as what load corresponds to Amazon Aurora transaction commit.
 
 
 * Write Transaction Commit Load: Load in Average Active Sessions per second for
@@ -29,14 +29,15 @@ COMMIT operations
 
 * INSERT load: load in Average Active Sessions per second for INSERT queries
 
-<!-- note: An *active session* is a connection that has submitted work to the
+**NOTE**: An *active session* is a connection that has submitted work to the
 database engine and is waiting for a response from it. For example, if you
 submit an SQL query to the database engine, the database session is active
-while the database engine is processing that query. -->
-## [Aurora Memory Used](dashboard-mysql-amazon-aurora-metrics.md#aurora-memory-used)
+while the database engine is processing that query.
 
-This graph shows how much memory is used by {{ amazon_aurora }} lock manager as well
-as amount of memory used by {{ amazon_aurora }} to store Data Dictionary.
+## Aurora Memory Used
+
+This graph shows how much memory is used by Amazon Aurora lock manager as well
+as amount of memory used by Amazon Aurora to store Data Dictionary.
 
 
 * Aurora Lock Manager Memory: the amount of memory used by the Lock Manager,
@@ -48,7 +49,7 @@ transactions.
 space that contains metadata used to keep track of database objects, such as
 tables and indexes.
 
-## [Amazon Aurora Statement Latency](dashboard-mysql-amazon-aurora-metrics.md#amazon-aurora-statement-latency)
+## Amazon Aurora Statement Latency
 
 This graph shows average latency for most important types of statements. Latency
 spikes are often indicative of the instance overload.
@@ -68,36 +69,36 @@ spikes are often indicative of the instance overload.
 
 * INSERT Latency: average time to execute INSERT queries
 
-## [Amazon Aurora Special Command Counters](dashboard-mysql-amazon-aurora-metrics.md#amazon-aurora-special-command-counters)
+## Amazon Aurora Special Command Counters
 
-{{ amazon_aurora }} {{ mysql }} allows a number of commands which are not available from
-standard {{ mysql }}. This graph shows usage of such commands. Regular
-`unit_test` calls can be seen in default {{ amazon_aurora }} install, the rest
+Amazon Aurora MySQL allows a number of commands which are not available from
+standard MySQL. This graph shows usage of such commands. Regular
+`unit_test` calls can be seen in default Amazon Aurora install, the rest
 will depend on your workload.
 
-show_volume_status
+`show_volume_status`
 
-    The number of executions per second of the command {{ sql_show_volume_status }}. The
-    {{ sql_show_volume_status }} query returns two server status variables: Disks and
+    The number of executions per second of the command `SHOW VOLUME STATUS`. The
+    `SHOW VOLUME STATUS` query returns two server status variables: Disks and
     Nodes. These variables represent the total number of logical blocks of data
     and storage nodes, respectively, for the DB cluster volume.
 
-awslambda
+`awslambda`
 
     The number of AWS Lambda calls per second. AWS Lambda is an event-drive,
     serverless computing platform provided by AWS. It is a compute service that
     run codes in response to an event. You can run any kind of code from Aurora
     invoking Lambda from a stored procedure or a trigger.
 
-alter_system
+`alter_system`
 
     The number of executions per second of the special query ALTER SYSTEM, that
     is a special query to simulate an instance crash, a disk failure, a disk
     congestion or a replica failure. It is a useful query for testing the system.
 
-## [Amazon Aurora Problems](dashboard-mysql-amazon-aurora-metrics.md#amazon-aurora-problems)
+## Amazon Aurora Problems
 
-This metric shows different kinds of internal {{ amazon_aurora }} {{ mysql }} problems
+This metric shows different kinds of internal Amazon Aurora MySQL problems
 which should be zero in case of normal operation.
 
 

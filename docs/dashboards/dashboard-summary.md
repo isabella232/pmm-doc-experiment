@@ -1,4 +1,4 @@
-# Summary Dashboard
+# Summary
 
 ## CPU Usage
 
@@ -12,7 +12,7 @@ System
 
 User
 
-    The time spent in the user space.  Normally, most of the {{ mysql }} CPU time is
+    The time spent in the user space.  Normally, most of the MySQL CPU time is
     in user space, a too high value may indicate an indexing issue.
 
 Iowait
@@ -29,8 +29,6 @@ Softirq
     a single core may be saturated.  Look for any quantity saturating at 100/(cpu
     core count).
 
-{{ view_all_metrics }} Summary Dashboard
-
 ## Processes
 
 The Processes metric shows how many processes/threads are either in the kernel
@@ -43,8 +41,6 @@ When the number of process blocked waiting for I/O is large, the load is disk bo
 
 The running average of the sum of these two quantities is the basis of the loadavg metric.
 
-{{ view_all_metrics }} Summary Dashboard
-
 ## Network Traffic
 
 The Network Traffic graph shows the rate of data transferred over the network.
@@ -52,18 +48,14 @@ Outbound is the data sent by the server while Inbound is the data received by
 the server.
 
 Look for signs of saturation given the capacity of the network devices. If the
-outbound rate is coffffnstantly high and close to saturation and you have plenty
+outbound rate is constantly high and close to saturation and you have plenty
 of available CPU, you should consider activating the compression option on the
-{{ mysql }} clients and slaves.
-
-{{ view_all_metrics }} Summary Dashboard
+MySQL clients and slaves.
 
 ## I/O Activity
 
 The I/O Activity graph shows the rates of data read from (Page In) and written
 to (Page Out) the all the disks as collected from the vmstat bi and bo columns.
-
-{{ view_all_metrics }} Summary Dashboard
 
 ## Disk Latency
 
@@ -76,41 +68,39 @@ the server.
 High latency values, typically more than 15 ms,  are an indication of a disk
 bound workload saturating the storage subsystem or, a faulty/degraded hardware.
 
-{{ view_all_metrics }} Summary Dashboard
+## MySQL Queries
 
-## {{ mysql }} Queries
+The MySQL Queries graph shows the rate of queries processed by MySQL.  The rate
+of queries is a rough indication of the MySQL Server load.
 
-The {{ mysql }} Queries graph shows the rate of queries processed by {{ mysql }}.  The rate
-of queries is a rough indication of the {{ mysql }} Server load.
+## InnoDB Row Operations
 
-{{ view_all_metrics }} Summary Dashboard
-
-## {{ innodb }} Row Operations
-
-The {{ innodb }} Row Operations graph shows the rate of rows processed by {{ innodb }}.  It
-is a good indication of the {{ mysql }} Server load.  A high value of Rows read, which
+The InnoDB Row Operations graph shows the rate of rows processed by InnoDB.  It
+is a good indication of the MySQL Server load.  A high value of Rows read, which
 can easily be above a million, is an indication of poor queries or deficient
 indexing.
 
 The amounts of rows inserted, updated and deleted help appreciate the server
 write load.
 
-{{ view_all_metrics }} Summary Dashboard
+## Top MySQL Commands
 
-## Top {{ mysql }} Commands
+The Top MySQL Commands graph shows the rate of the various kind of SQL
+statements executed on the MySQL Server.
 
-The Top {{ mysql }} Commands graph shows the rate of the various kind of SQL
-statements executed on the {{ mysql }} Server.
+## Top MySQL Handlers
 
-{{ view_all_metrics }} Summary Dashboard
+The Top MySQL Handlers graph shows the rate of the various low level storage
+engine handler calls. The most important ones to watch are `read_next` and
+`read_rnd_next`.
 
-## Top {{ mysql }} Handlers
+A high value for `read_rnd_next` is an indication there are table scans while a
+high value of `read_next` is an indication of index scans.
 
-The Top {{ mysql }} Handlers graph shows the rate of the various low level storage
-engine handler calls. The most important ones to watch are *read_next* and
-*read_rnd_next*.
+**See also**
 
-A high values for read_rnd_next is an indication there are table scans while a
-high value of read_next is an indication of index scans.
 
-{{ view_all_metrics }} Summary Dashboard
+* [Understanding Linux CPU Stats](http://blog.scoutapp.com/articles/2015/02/24/understanding-linuxs-cpu-stats)
+
+
+* [Vmstat Output Explained](http://nonfunctionaltestingtools.blogspot.ca/2013/03/vmstat-output-explained.html)

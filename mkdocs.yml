@@ -49,8 +49,10 @@ plugins:
         include_yaml: ['replace.yml']
     - exclude:
         glob:
+          - index.md
           - index-glossary.md
           - index-qan.md
+          - qan-query-time-distribution.md
           - index-using-pmm-metrics-monitor.md
           - tool.md
           - install/index-*
@@ -58,17 +60,23 @@ plugins:
           - install/aws-upgrade.md
           - install/docker-*
           - install/ova-*
+          - install/client/*
           - manage/index-*
           - concepts/services-*
+          - concepts/index.md
           - platform/index.md
+          - dashboards/index.md
           - dashboards/dashboard-node-temperature-details.md
           - dashboards/dashboard-processes-details.md
           - dashboards/dashboard-prometheus-exporter-status.md
           - dashboards/dashboard-prometheus.md
+          - dashboards/dashboard-node-memory.md
+          - dashboards/dashboard-node-summary.md
           - release-notes/index.md
+          - reference/index.md
 
 nav:
-    - 'index.md'
+    - 'introduction.md'
     - 'PMM Concepts':
         - 'concepts/architecture.md'
         - Services:
@@ -178,6 +186,10 @@ nav:
     - 'contact.md'
     - 'glossary-terminology.md'
     - 'Release Notes':
+        - 'release-notes/2.9.0.md'
+        - 'release-notes/2.8.0.md'
+        - 'release-notes/2.7.0.md'
+        - 'release-notes/2.6.1.md'
         - 'release-notes/2.6.0.md'
         - 'release-notes/2.5.0.md'
         - 'release-notes/2.4.0.md'
@@ -189,3 +201,5 @@ nav:
         - 'release-notes/2.0.1.md'
         - 'release-notes/2.0.0.md'
     - 'faq.md'
+    - 'Reference':
+        - 'reference/pmm-admin.md'

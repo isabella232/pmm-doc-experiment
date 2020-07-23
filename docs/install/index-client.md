@@ -4,7 +4,7 @@
 * Installing Clients
 
 
-* Installing DEB packages using apt-get
+* Installing DEB packages using `apt-get`
 
 
-* Installing RPM packages using yum
+* Installing RPM packages using `yum`

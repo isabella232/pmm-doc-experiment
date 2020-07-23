@@ -1,7 +1,7 @@
-# {{ prometheus }} Exporter Status
+# Prometheus Exporter Status
 
-The {{ prometheus }} Exporter Status dashboard reports the consumption of resources
-by the {{ prometheus }} exporters used by {{ pmm }}. For each exporter, this dashboard
+The Prometheus Exporter Status dashboard reports the consumption of resources
+by the Prometheus exporters used by PMM. For each exporter, this dashboard
 reveals the following information:
 
 
@@ -15,3 +15,7 @@ reveals the following information:
 
 
 * Exporter uptime
+
+**See also**
+
+Prometheus Exporters Overview

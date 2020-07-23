@@ -1,5 +1,6 @@
 # PostgreSQL requirements
 
-## Supported versions of PostgreSQL
+PMM follows the [postgresql.org EOL policy](https://www.postgresql.org/support/versioning/).
 
-{{ pmm }} follows [postgresql.org EOL policy](https://www.postgresql.org/support/versioning/), and thus supports monitoring {{ postgresql }} version 9.4 and up.  Older versions may work, but will not be supported.  For additional assistance, visit [Percona PMM Forums](https://www.percona.com/forums/questions-discussions/percona-monitoring-and-management/).
+For specific details on supported platforms and versions, see
+[Percona’s Software Platform Lifecycle page](https://www.percona.com/services/policies/percona-software-platform-lifecycle/).

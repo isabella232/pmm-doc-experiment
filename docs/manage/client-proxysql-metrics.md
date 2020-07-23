@@ -1,11 +1,9 @@
 # Adding a ProxySQL host
 
-## Adding ProxySQL metrics service
+Use the `proxysql` alias
+to enable ProxySQL performance metrics monitoring.
 
-Use the {{ opt_proxysql_metrics }} alias
-to enable {{ proxysql }} performance metrics monitoring.
-
-### USAGE
+## USAGE
 
 ```
 pmm-admin add proxysql --username=admin --password=admin
@@ -20,18 +18,22 @@ automatically as `<node>-proxysql` and `127.0.0.1:3306`.
 The output of this command may look as follows:
 
 ```
-# pmm-admin add proxysql --username=admin --password=admin
+pmm-admin add proxysql --username=admin --password=admin
+```
+
+```
 ProxySQL Service added.
 Service ID  : /service_id/f69df379-6584-4db5-a896-f35ae8c97573
 Service name: ubuntu-proxysql
 ```
 
 Beside positional arguments shown above you can specify service name and
-service address with the following flags: `--service-name`, `--host` (the
-hostname or IP address of the service), and `--port` (the port number of the
-service). If both flag and positional argument are present, flag gains higher
-priority. Here is the previous example modified to use these flags:
+service address with the following flags: `--service-name`, and `--host` (the
+hostname or IP address of the service) and `--port` (the port number of the
+service), or `--socket` (the UNIX socket path). If both flag and positional argument are present, flag gains higher
+priority. Here is the previous example modified to use these flags for both host/port or socket connections:
 
 ```
-pmm-admin add proxysql --username=pmm --password=pmm --service-name=my-new-proxysql --host=127.0.0.1 --port=3306
+pmm-admin add proxysql --username=pmm --password=pmm --service-name=my-new-proxysql --host=127.0.0.1 --port=6032
+pmm-admin add proxysql --username=pmm --password=pmm --service-name=my-new-proxysql --socket=/tmp/proxysql_admin.sock
 ```

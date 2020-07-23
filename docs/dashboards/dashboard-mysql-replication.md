@@ -1,4 +1,4 @@
-# {{ mysql }} Replication
+# MySQL Replication
 
 ## IO Thread Running
 
@@ -13,56 +13,44 @@ Depending on the format of the binary log it can read query statements in plain
 text and re-execute them or it can read raw data and apply them to the local
 host.
 
-### Possible values
+**Possible values**
 
 Yes
 
-> The thread is running and is connected to a replication master
+    The thread is running and is connected to a replication master
 
 No
 
-> The thread is not running because it is not lauched yet or because an error
-> has occured connecting to the master host
+    The thread is not running because it is not lauched yet or because an error
+    has occured connecting to the master host
 
 Connecting
 
-> The thread is running but is not connected to a replication master
+    The thread is running but is not connected to a replication master
 
 No value
 
-> The host is not configured to be a replication slave
+    The host is not configured to be a replication slave
 
 IO Thread Running is one of the parameters that the command
-{{ sql_show_slave_status }} returns.
-
-{{ view_all_metrics }} {{ mysql }} Replication
+`SHOW SLAVE STATUS` returns.
 
 ## SQL Thread Running
 
 This metric shows if the SQL thread is running or not. It only applies to a
 slave host.
 
-SQL Thread is a process that runs on a slave host in the replication
-environment. It reads the events from the local relay log file and applies them
-to the slave server.
-
-Depending on the format of the binary log it can read query statements in plain
-text and re-execute them or it can read raw data and apply them to the local
-host.
-
-### Possibile values
+**Possible values**
 
 Yes
 
-> SQL Thread is running and is applying events from the realy log to the local
-> slave host
+    SQL Thread is running and is applying events from the realy log to the local
+    slave host
 
 No
 
-> SQL Thread is not running because it is not launched yet or because of an
-> errror occurred while applying an event to the local slave host
-
-{{ view_all_metrics }} {{ mysql }} Replication
+    SQL Thread is not running because it is not launched yet or because of an
+    errror occurred while applying an event to the local slave host
 
 ## Replication Error No
 
@@ -73,29 +61,25 @@ One of the more common errors is *Error: 1022 Duplicate Key Entry*. In such a
 case replication is attempting to update a row that already exists on the slave.
 The SQL Thread will stop replication in order to avoid data corruption.
 
-{{ view_all_metrics }} {{ mysql }} Replication
-
 ## Read only
 
 This metric indicates whether the host is configured to be in *Read Only*
 mode or not.
 
-### Possible values
+**Possible values**
 
 Yes
 
-> The slave host permits no client updates except from users who have the SUPER
-> privilege or the REPLICATION SLAVE privilege.
+    The slave host permits no client updates except from users who have the SUPER
+    privilege or the REPLICATION SLAVE privilege.
 
-> This kind of configuration is tipically used for slave hosts in a replication
-> environment to avoid a user can inadvertently or voluntarily modify data
-> causing inconsistencies and stopping the replication process.
+    This kind of configuration is tipically used for slave hosts in a replication
+    environment to avoid a user can inadvertently or voluntarily modify data
+    causing inconsistencies and stopping the replication process.
 
 No
 
-> The slave host is not configured in *Read Only* mode.
-
-{{ view_all_metrics }} {{ mysql }} Replication
+    The slave host is not configured in *Read Only* mode.
 
 ## MySQL Replication Delay
 
@@ -126,8 +110,6 @@ contribute to slave servers lagging behind the master.
 Generally adding more CPU or Disk resources can alleviate replication lag
 issues, up to a point.
 
-{{ view_all_metrics }} {{ mysql }} Replication
-
 ## Binlog Size
 
 This metric shows the overall size of the binary log files, which can exist on
@@ -140,15 +122,9 @@ the table structures. There can be more than one binlog file present depending
 on the binlog rotation policy adopted (for example using the configuration
 variables `max_binlog_size` and `expire_logs_days`).
 
-There can be more binlog files depending on the rotation policy adopted (for
-example using the configuration variables {{ opt_max_binlog_size }} and {{ opt_expire_logs_days }})
-or even because of server reboots.
+**NOTE**: There can be more binlog files depending on the rotation policy adopted (for example using the configuration variables `max_binlog_size` and `expire_logs_days`) or even because of server reboots.
 
-When planning the disk space, take care of the overall dimension of binlog files
-and adopt a good rotation policy or think about having a separate mount point or
-disk to store the binlog data.
-
-{{ view_all_metrics }} {{ mysql }} Replication
+When planning the disk space, take care of the overall dimension of binlog files and adopt a good rotation policy or think about having a separate mount point or disk to store the binlog data.
 
 ## Binlog Data Written Hourly
 
@@ -156,36 +132,14 @@ This metric shows the amount of data written hourly to the binlog files during
 the last 24 hours. This metric can give you an idea of how big is your
 application in terms of data writes (creation, modification, deletion).
 
-{{ view_all_metrics }} {{ mysql }} Replication
-
 ## Binlog Count
 
 This metric shows the overall count of binary log files, on both
 master and slave servers.
 
-There can be more binlog files depending on the rotation policy adopted (for
-example using the configuration variables {{ opt_max_binlog_size }} and {{ opt_expire_logs_days }})
-or even because of server reboots.
-
-When planning the disk space, take care of the overall dimension of binlog files
-and adopt a good rotation policy or think about having a separate mount point or
-disk to store the binlog data.
-
-{{ view_all_metrics }} {{ mysql }} Replication
-
 ## Binlogs Created Hourly
 
 This metric shows the number of binlog files created hourly during the last 24 hours.
-
-There can be more binlog files depending on the rotation policy adopted (for
-example using the configuration variables {{ opt_max_binlog_size }} and {{ opt_expire_logs_days }})
-or even because of server reboots.
-
-When planning the disk space, take care of the overall dimension of binlog files
-and adopt a good rotation policy or think about having a separate mount point or
-disk to store the binlog data.
-
-{{ view_all_metrics }} {{ mysql }} Replication
 
 ## Relay Log Space
 
@@ -198,23 +152,48 @@ executed on the slave host in order to replicate database changes.
 The relay log has the same format as the binlog.
 
 There can be multiple relay log files depending on the rotation policy adopted
-(using the configuration variable {{ opt_max_relay_log_size }}).
+(using the configuration variable `max_relay_log_size`).
 
 As soon as the SQL thread completes to execute all events in the relay log file,
 the file is deleted.
 
-If this metric contains a high value, the variable {{ opt_max_relay_log_file }} is
+If this metric contains a high value, the variable `max_relay_log_file` is
 high too. Generally, this not a serious issue. If the value of this metric is
 constantly increased, the slave is delaying too much in applying the events.
 
 Treat this metric in the same way as the
 MySQL Replication Delay metric.
 
-{{ view_all_metrics }} {{ mysql }} Replication
-
 ## Relay Log Written Hourly
 
 This metric shows the amount of data written hourly into relay log files during
 the last 24 hours.
 
-{{ view_all_metrics }} {{ mysql }} Replication
+**See also**
+
+
+* [MySQL 5.7 Replication](https://dev.mysql.com/doc/refman/5.7/en/replication.html)
+
+
+* [MySQL 5.7 SHOW SLAVE STATUS Syntax](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html)
+
+
+* [MySQL 5.7 IO Thread states](https://dev.mysql.com/doc/refman/5.7/en/slave-io-thread-states.html)
+
+
+* [MySQL 5.7 Thread states](https://dev.mysql.com/doc/refman/5.7/en/slave-sql-thread-states.html)
+
+
+* [MySQL 5.7 list of error codes](https://dev.mysql.com/doc/refman/5.7/en/error-messages-server.html)
+
+
+* [MySQL 5.7 Improving replication performance](https://dev.mysql.com/doc/refman/5.7/en/replication-solutions-performance.html)
+
+
+* [MySQL 5.7 Replication Slave Options and Variables](https://dev.mysql.com/doc/refman/5.7/en/replication-options-slave.html)
+
+
+* [MySQL 5.7 The binary log](https://dev.mysql.com/doc/refman/5.7/en/binary-log.html)
+
+
+* [MySQL 5.7 The Slave Relay Log](https://dev.mysql.com/doc/refman/5.7/en/slave-logs-relaylog.html)

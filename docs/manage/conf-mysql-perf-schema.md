@@ -1,21 +1,24 @@
 # Configuring Performance Schema
 
-The default source of query data for {{ pmm }} is the {{ slow_query_log }}.  It is
-available in {{ mysql }} 5.1 and later versions.  Starting from {{ mysql }} 5.6
-(including {{ percona_server }} 5.6 and later), you can choose to parse query data
-from the {{ perf_schema }} instead of {{ slow_query_log }}.  Starting from {{ mysql }}
-5.6.6, {{ perf_schema }} is enabled by default.
+The default source of query data for PMM is the *slow query log*.  It is
+available in MySQL 5.1 and later versions.  Starting from MySQL 5.6
+(including Percona Server 5.6 and later), you can choose to parse query data
+from the *Performance Schema* instead of *slow query log*.  Starting from MySQL
+5.6.6, *Performance Schema* is enabled by default.
 
-{{ perf_schema }} is not as data-rich as the {{ slow_query_log }}, but it has all the
+*Performance Schema* is not as data-rich as the *slow query log*, but it has all the
 critical data and is generally faster to parse. If you are not running
-{{ percona_server }} (which supports sampling for the slow query log), then {{ performance_schema }} is a better alternative.
+Percona Server (which supports sampling for the slow query log), then *Performance Schema* is a better alternative.
 
 **NOTE**: Use of the performance schema is off by default in MariaDB 10.x.
 
-To use {{ perf_schema }}, set the `performance_schema` variable to `ON`:
+To use *Performance Schema*, set the `performance_schema` variable to `ON`:
 
 ```
-mysql> SHOW VARIABLES LIKE 'performance_schema';
+SHOW VARIABLES LIKE 'performance_schema';
+```
+
+```
 +--------------------+-------+
 | Variable_name      | Value |
 +--------------------+-------+
@@ -24,7 +27,7 @@ mysql> SHOW VARIABLES LIKE 'performance_schema';
 ```
 
 If this variable is not set to **ON**, add the the following lines to the
-{{ mysql }} configuration file {{ my_cnf }} and restart {{ mysql }}:
+MySQL configuration file `my.cnf` and restart MySQL:
 
 ```
 [mysql]
@@ -35,7 +38,10 @@ If you are running a custom Performance Schema configuration, make sure that the
 `statements_digest` consumer is enabled:
 
 ```
-mysql> select * from setup_consumers;
+select * from setup_consumers;
+```
+
+```
 +----------------------------------+---------+
 | NAME                             | ENABLED |
 +----------------------------------+---------+
@@ -58,34 +64,49 @@ mysql> select * from setup_consumers;
 15 rows in set (0.00 sec)
 ```
 
-If the instance is already running, configure the {{ qan }} agent to collect data
-from {{ perf_schema }}:
+**NOTE**: *Performance Schema* instrumentation is enabled by default in MySQL 5.6.6 and
+later versions. It is not available at all in MySQL versions prior to 5.6.
+
+If certain instruments are not enabled, you will not see the corresponding
+graphs in the MySQL Performance Schema dashboard.  To enable
+full instrumentation, set the option `--performance_schema_instrument` to
+`'%=on'` when starting the MySQL server.
+
+```
+mysqld --performance-schema-instrument='%=on'
+```
+
+This option can cause additional overhead and should be used with care.
+
+If the instance is already running, configure the QAN agent to collect data
+from *Performance Schema*:
 
 
-1. Open the {{ qan_name }} dashboard.
+1. Open the *PMM Query Analytics* dashboard.
 
 
-2. Click the {{ gui_settings }} button.
+2. Click the *Settings* button.
 
 
-3. Open the {{ gui_settings }} section.
+3. Open the *Settings* section.
 
 
-4. Select {{ opt_performance_schema }} in the {{ gui_collect_from }} drop-down list.
+4. Select `Performance Schema` in the *Collect from* drop-down list.
 
 
-5. Click {{ gui_apply }} to save changes.
+5. Click *Apply* to save changes.
 
-If you are adding a new monitoring instance with the {{ pmm_admin }} tool, use the
-{{ opt_query_source }} *perfschema* option:
+If you are adding a new monitoring instance with the `pmm-admin` tool, use the
+`--query-source` *perfschema* option:
 
-{{ tip_run_this_root }}
+Run this command as root or by using the `sudo` command
 
 ```
 pmm-admin add mysql --username=pmm --password=pmmpassword --query-source='perfschema' ps-mysql 127.0.0.1:3306
 ```
 
-For more information, run
-{{ pmm_admin_add }}
-{{ opt_mysql }}
-{{ opt_help }}.
+For more information, run `pmm-admin add mysql --help`.
+
+**See also**
+
+[MySQL Server 5.7 Documentation: –performance_schema_instrument](https://dev.mysql.com/doc/refman/5.7/en/performance-schema-options.html#option_mysqld_performance-schema-instrument)

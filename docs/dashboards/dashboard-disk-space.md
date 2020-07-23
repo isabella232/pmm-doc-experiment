@@ -1,6 +1,6 @@
-# Disk space
+# Disk Details
 
-## [Mountpoint Usage](dashboard-disk-space.md#mountpoint-usage)
+## Mountpoint Usage
 
 This metric shows the percentage of disk space utilization for every mountpoint
 defined on the system. It is not good having some of the mountpoints close to
@@ -10,9 +10,7 @@ block one of the services or even causing a crash of the entire sytem.
 In case a mountpoint is close to 100%, consider to cancel unused files or to
 expand the space allocate to it.
 
-{{ view_all_metrics }} Disk space
-
-## [Mountpoint](dashboard-disk-space.md#mountpoint.root)
+## Mountpoint
 
 This metric shows information about the disk space usage of the specified
 mountpoint.
@@ -34,5 +32,3 @@ system.
 
 In case *Free* is close to 0 B, consider to cancel unused files or to expand the
 space allocated to the mountpoint.
-
-{{ view_all_metrics }} Disk space

@@ -1,6 +1,6 @@
-# Inventory Dashboard
+# Inventory
 
-The *Inventory* dashboard is a high level overview of all objects {{ pmm }} “knows”
+The *Inventory* dashboard is a high level overview of all objects PMM “knows”
 about.
 
 It contains three tabs (*services*, *agents*, and *nodes*) with lists of the
@@ -35,3 +35,24 @@ a single node, with different service names, e.g. mysql1-3306, and mysql1-3307.
     * mysqld_exporter & QAN MySQL Perfschema are assigned to a service_id.
 
 Examples are pmm-agent, node_exporter, mysqld_exporter, QAN MySQL Perfschema.
+
+## Removing items from the inventory
+
+You can remove items from the inventory.
+
+
+1. Open *Home Dashboard > PMM Inventory*
+
+
+2. In the first column, select the items to be removed.
+
+
+
+![image](/_images/inventory-delete-object.png)
+
+
+3. Click *Delete*. The interface will ask you to confirm the operation:
+
+
+
+![image](/_images/inventory-confirm-delete.png)

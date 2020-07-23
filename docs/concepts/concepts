@@ -1,9 +1,0 @@
-  /Users/paul.jacobs/Documents/pmm-doc-md/docs/concepts:
-  total used in directory 72 available 4881457445
-  drwxrwxrwx   9 paul.jacobs  staff   288B 21 May 16:49 .
-  drwxrwxrwx  29 paul.jacobs  staff   928B 21 May 14:07 ..
-  -rwxrwxrwx   1 paul.jacobs  staff   5.3K 21 May 11:02 architecture.md
-  -rwxrwxrwx   1 paul.jacobs  staff    87B 16 May 16:13 services-index.md
-  -rwxrwxrwx   1 paul.jacobs  staff   3.4K 16 May 20:18 services-mongodb.md
-  -rwxrwxrwx   1 paul.jacobs  staff   4.0K 16 May 20:11 services-mysql.md
-  -rwxrwxrwx   1 paul.jacobs  staff   423B 16 May 16:13 services-postgres.md

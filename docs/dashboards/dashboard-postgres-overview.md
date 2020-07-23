@@ -1,86 +1,70 @@
-# {{ dbd_postgres_overview }}
+# PostgreSQL Overview
 
-This dashboard provides basic information about {{ postgresql }} hosts.
+This dashboard provides basic information about PostgreSQL hosts.
 
-## [Connected](dashboard-postgres-overview.md#connected)
+## Connected
 
-Reports whether PMM Server can connect to the {{ postgresql }} instance.
+Reports whether PMM Server can connect to the PostgreSQL instance.
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
+## Version
 
-## [Version](dashboard-postgres-overview.md#version)
+The version of the PostgreSQL instance.
 
-The version of the {{ postgresql }} instance.
-
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
-
-## [Shared Buffers](dashboard-postgres-overview.md#shared-buffers)
+## Shared Buffers
 
 Defines the amount of memory the database server uses for shared memory
 buffers. Default is `128MB`. Guidance on tuning is `25%` of RAM, but
 generally doesn’t exceed `40%`.
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
-
-## [Disk-Page Buffers](dashboard-postgres-overview.md#disk-page-buffers)
+## Disk-Page Buffers
 
 The setting `wal_buffers` defines how much memory is used for caching the
 write-ahead log entries. Generally this value is small (`3%` of
 `shared_buffers` value), but it may need to be modified for heavily loaded
 servers.
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
+## Memory Size for each Sort
 
-## [Memory Size for each Sort](dashboard-postgres-overview.md#memory-size-for-each-sort)
-
-The parameter work_mem defines the amount of memory assigned for internal sort
+The parameter `work_mem` defines the amount of memory assigned for internal sort
 operations and hash tables before writing to temporary disk files. The default
 is `4MB`.
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
+## Disk Cache Size
 
-## [Disk Cache Size](dashboard-postgres-overview.md#disk-cache-size)
-
-{{ postgresql }}’s `effective_cache_size` variable tunes how much RAM you expect
+PostgreSQL’s `effective_cache_size` variable tunes how much RAM you expect
 to be available for disk caching. Generally adding Linux free+cached will give
 you a good idea. This value is used by the query planner whether plans will fit
 in memory, and when defined too low, can lead to some plans rejecting certain
 indexes.
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
-
-## [Autovacuum](dashboard-postgres-overview.md#autovacuum)
+## Autovacuum
 
 Whether autovacuum process is enabled or not. Generally the solution is to
 vacuum more often, not less.
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
-
-## [PostgreSQL Connections](dashboard-postgres-overview.md#connections)
+## PostgreSQL Connections
 
 Max Connections
 
     The maximum number of client connections allowed. Change this value with
     care as there are some memory resources that are allocated on a per-client
     basis, so setting `max_connections` higher will generally increase overall
-    {{ postgresql }} memory usage.
+    PostgreSQL memory usage.
 
 Connections
 
-    The number of connection attempts (successful or not) to the {{ postgresql }}
+    The number of connection attempts (successful or not) to the PostgreSQL
     server.
 
 Active Connections
 
-    The number of open connections to the {{ postgresql }} server.
+    The number of open connections to the PostgreSQL server.
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
-
-## [PostgreSQL Tuples](dashboard-postgres-overview.md#tuples)
+## PostgreSQL Tuples
 
 Tuples
 
-    The total number of rows processed by {{ postgresql }} server: fetched, returned,
+    The total number of rows processed by PostgreSQL server: fetched, returned,
     inserted, updated, and deleted.
 
 Read Tuple Activity
@@ -92,9 +76,7 @@ Tuples Changed per 5min
     The number of rows changed in the last 5 minutes: inserted, updated, and
     deleted ones.
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
-
-## [PostgreSQL Transactions](dashboard-postgres-overview.md#transactions)
+## PostgreSQL Transactions
 
 Transactions
 
@@ -105,9 +87,7 @@ Duration of Transactions
 
     Maximum duration in seconds any active transaction has been running.
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
-
-## [Temp Files](dashboard-postgres-overview.md#temp-files)
+## Temp Files
 
 Number of Temp Files
 
@@ -121,9 +101,7 @@ Size of Temp files
 regardless of why the temporary file was created (e.g., sorting or hashing),
 and regardless of the `log_temp_files` setting.
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
-
-## [Conflicts and Locks](dashboard-postgres-overview.md#conflicts-and-locks)
+## Conflicts and Locks
 
 Conflicts/Deadlocks
 
@@ -133,11 +111,9 @@ Conflicts/Deadlocks
 
 Number of Locks
 
-    The number of deadlocks detected by {{ postgresql }}.
+    The number of deadlocks detected by PostgreSQL.
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
-
-## [Buffers and Blocks Operations](dashboard-postgres-overview.md#buffers-and-blocks-operations)
+## Buffers and Blocks Operations
 
 Operations with Blocks
 
@@ -156,11 +132,9 @@ SELECT pg_reload_conf();
 
 Buffers
 
-    The number of buffers allocated by {{ postgresql }}.
+    The number of buffers allocated by PostgreSQL.
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
-
-## [Canceled Queries](dashboard-postgres-overview.md#canceled-queries)
+## Canceled Queries
 
 The number of queries that have been canceled due to dropped tablespaces, lock
 timeouts, old snapshots, pinned buffers, and deadlocks.
@@ -168,36 +142,49 @@ timeouts, old snapshots, pinned buffers, and deadlocks.
 **NOTE**: Data shown by this gauge are based on the
 `pg_stat_database_conflicts` view.
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
-
-## [Cache Hit Ratio](dashboard-postgres-overview.md#cache-hit-ratio)
+## Cache Hit Ratio
 
 The number of times disk blocks were found already in the buffer cache, so that
 a read was not necessary.
 
-**NOTE**: This only includes hits in the {{ postgresql }} buffer cache, not the
+**NOTE**: This only includes hits in the PostgreSQL buffer cache, not the
 operating system’s file system cache.
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
-
-## [Checkpoint Stats](dashboard-postgres-overview.md#checkpoint-stats)
+## Checkpoint Stats
 
 The total amount of time that has been spent in the portion of checkpoint
 processing where files are either written or synchronized to disk,
 in milliseconds.
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
+## PostgreSQL Settings
 
-## [PostgreSQL Settings](dashboard-postgres-overview.md#postgresql-settings)
+The list of all settings of the PostgreSQL server.
 
-The list of all settings of the {{ postgresql }} server.
+## System Summary
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
-
-## [System Summary](dashboard-postgres-overview.md#system-summary)
-
-This section contains the following system parameters of the {{ postgresql }}
+This section contains the following system parameters of the PostgreSQL
 server: CPU Usage, CPU Saturation and Max Core Usage, Disk I/O Activity, and
 Network Traffic.
 
-{{ view_all_metrics }} {{ dbd_postgres_overview }}
+**See also**
+
+
+* PostgreSQL
+
+
+* [PostgreSQL Server status variables: autovacuum](https://www.postgresql.org/docs/current/static/routine-vacuuming.html#AUTOVACUUM)
+
+
+* [PostgreSQL Server status variables: effective_cache_size](https://www.postgresql.org/docs/current/static/runtime-config-query.html#GUC-EFFECTIVE-CACHE-SIZE)
+
+
+* [PostgreSQL Server status variables: max_connections](https://www.postgresql.org/docs/current/static/runtime-config-connection.html#GUC-MAX-CONNECTIONS)
+
+
+* [PostgreSQL Server status variables: shared_buffers](https://www.postgresql.org/docs/current/static/runtime-config-resource.html#GUC-SHARED-BUFFERS)
+
+
+* [PostgreSQL Server status variables: wal_buffers](https://www.postgresql.org/docs/current/static/runtime-config-wal.html#GUC-WAL-BUFFERS)
+
+
+* [PostgreSQL Server status variables: work_mem](https://www.postgresql.org/docs/current/static/runtime-config-resource.html#GUC-WORK-MEM)

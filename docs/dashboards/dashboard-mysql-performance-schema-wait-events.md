@@ -1,6 +1,6 @@
-# {{ perf_schema }} Wait Event Analysis Dashboard
+# Performance Schema Wait Event Analysis
 
-This dashboard helps to analyse {{ perf_schema }} wait events. It plots the
+This dashboard helps to analyse *Performance Schema* wait events. It plots the
 following metrics for the chosen (one or more) wait events:
 
 
@@ -11,3 +11,7 @@ following metrics for the chosen (one or more) wait events:
 
 
 * *Avg Wait Time - Performance Schema Waits*
+
+**See also**
+
+[MySQL 5.7 Documentation: Performance Schema](https://dev.mysql.com/doc/refman/5.7/en/performance-schema.html)

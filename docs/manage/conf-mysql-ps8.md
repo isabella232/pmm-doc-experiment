@@ -1,40 +1,63 @@
 # Configuring MySQL 8.0 for PMM
 
-{{ mysql }} 8 (in version 8.0.4) changes the way clients are authenticated by
-default. The {{ opt_default_authentication_plugin }} parameter is set to
-`caching_sha2_password`. This change of the default value implies that {{ mysql }}
+MySQL 8 (in version 8.0.4) changes the way clients are authenticated by
+default. The `default_authentication_plugin` parameter is set to
+`caching_sha2_password`. This change of the default value implies that MySQL
 drivers must support the SHA-256 authentication. Also, the communication channel
-with {{ mysql }} 8 must be encrypted when using `caching_sha2_password`.
+with MySQL 8 must be encrypted when using `caching_sha2_password`.
 
-The {{ mysql }} driver used with {{ pmm }} does not yet support the SHA-256 authentication.
+The MySQL driver used with PMM does not yet support the SHA-256 authentication.
 
-With currently supported versions of {{ mysql }}, {{ pmm }} requires that a dedicated {{ mysql }}
-user be set up. This {{ mysql }} user should be authenticated using the
-`mysql_native_password` plugin.  Although {{ mysql }} is configured to support SSL
-clients, connections to {{ mysql }} Server are not encrypted.
+With currently supported versions of MySQL, PMM requires that a dedicated MySQL
+user be set up. This MySQL user should be authenticated using the
+`mysql_native_password` plugin.  Although MySQL is configured to support SSL
+clients, connections to MySQL Server are not encrypted.
 
-There are two workarounds to be able to add {{ mysql }} Server version 8.0.4
-or higher as a monitoring service to {{ pmm }}:
-
-
-1. Alter the {{ mysql }} user that you plan to use with {{ pmm }}
+There are two workarounds to be able to add MySQL Server version 8.0.4
+or higher as a monitoring service to PMM:
 
 
-2. Change the global {{ mysql }} configuration
+1. Alter the MySQL user that you plan to use with PMM
 
-### Altering the {{ mysql }} User
 
-Provided you have already created the {{ mysql }} user that you plan to use
-with {{ pmm }}, alter this user as follows:
+2. Change the global MySQL configuration
+
+**Altering the MySQL User**
+
+Provided you have already created the MySQL user that you plan to use
+with PMM, alter this user as follows:
+
+```
+mysql> ALTER USER pmm@'localhost' IDENTIFIED WITH mysql_native_password BY '$eCR8Tp@s$w*rD';
+```
 
 Then, pass this user to `pmm-admin add` as the value of the `--username`
 parameter.
 
 This is a preferred approach as it only weakens the security of one user.
 
-### Changing the global {{ mysql }} Configuration
+**Changing the global MySQL Configuration**
 
-A less secure approach is to set {{ opt_default_authentication_plugin }}
+A less secure approach is to set `default_authentication_plugin`
 to the value **mysql_native_password** before adding it as a
-monitoring service. Then, restart your {{ mysql }} Server to apply this
+monitoring service. Then, restart your MySQL Server to apply this
 change.
+
+```
+[mysqld]
+default_authentication_plugin=mysql_native_password
+```
+
+**See also**
+
+
+* What privileges are required to monitor a MySQL instance?
+
+
+* [MySQL Server Blog: MySQL 8.0.4 : New Default Authentication Plugin : caching_sha2_password](https://mysqlserverteam.com/mysql-8-0-4-new-default-authentication-plugin-caching_sha2_password/)
+
+
+* [MySQL Server 8.0 Documentation: Authentication Plugins](https://dev.mysql.com/doc/refman/8.0/en/authentication-plugins.html)
+
+
+* [MySQL Server 8.0 Documentation: Native Pluggable Authentication](https://dev.mysql.com/doc/refman/8.0/en/native-pluggable-authentication.html)

@@ -1,6 +1,6 @@
-# {{ dbd_mysql_table_statistics }}
+# MySQL Table Statistics
 
-This dashboard presents various data related to {{ mysql }} tables.
+This dashboard presents various data related to MySQL tables.
 
 ## Largest Tables
 

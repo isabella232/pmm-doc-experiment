@@ -1,4 +1,4 @@
-# {{ mysql }}
+# MySQL
 
 
 * Slow Log Settings
@@ -7,7 +7,7 @@
 * Configuring Performance Schema
 
 
-* Improving {{ pmm }} Performance with Table Statistics Options
+* Improving PMM Performance with Table Statistics Options
 
 
 * MySQL InnoDB Metrics

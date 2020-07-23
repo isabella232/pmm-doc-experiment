@@ -1,8 +1,8 @@
-# {{ dbd_compare_system_parameters }} Dashboard
+# Nodes Compare
 
-The {{ dbd_compare_system_parameters }} dashboard allows to compare wide range of
-parameters of the servers monitored by {{ pmm }}. Same type parameters are shown
-side by side for all the servers, grouped in the following sections:
+The Nodes Compare dashboard allows you to compare wide range of
+parameters of the servers monitored by PMM. Same type parameters are shown
+side by side for all the servers, grouped into the following sections:
 
 
 * System Information

@@ -1,7 +1,7 @@
-# {{ dbd_node_temperature_details }} Dashboard
+# Node Temperature Details
 
-The {{ dbd_node_temperature_details }} dashboard exposes hardware monitoring and
-sensor data obtained through the sysfs virtual filesystem of the node.
+The Node Temperature Details dashboard exposes hardware monitoring and
+sensor data obtained through the `sysfs` virtual filesystem of the node.
 
 Hardware monitoring devices attached to the CPU and/or other chips on the
 motherboard let you monitor the hardware health of a system. Most modern
