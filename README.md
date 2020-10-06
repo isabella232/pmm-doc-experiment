@@ -10,7 +10,7 @@ The markdown files were written by Sphinx using the
 ## Issues
 
 - The source reST files have hard-wired references that cause broken links.
-- Images rendered with `.. figure::` are missing and must be manually added. 
+- Images rendered with `.. figure::` are missing and must be manually added.
 
 ## Installation
 
@@ -21,7 +21,7 @@ Use a [Docker](https://docs.docker.com/engine/install/) image with all prerequis
 ```bash
 # Clone this repository
 cd pmm-doc-experiment
-docker run --rm -it -p 8000:8000 -v $(pwd):/mkdocs pauljacobspercona/mkdocs-showcase
+docker run --rm -it -p 8000:8000 -v $(pwd):/mkdocs pauljacobspercona/mkdocs-showcase mkdocs serve --dev-addr=0.0.0.0:8000
 ```
 
 Open <http://localhost:8000> in a browser.
@@ -29,7 +29,7 @@ Open <http://localhost:8000> in a browser.
 ### Option 2: Native Install
 
 #### Install Prerequisites (Debian/Ubuntu)
-   
+
 ```bash
 sudo apt install -y python3 python3-pip
 ```
